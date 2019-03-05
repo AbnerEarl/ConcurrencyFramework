@@ -7,7 +7,7 @@
 
 版本号：[![](https://www.jitpack.io/v/YouAreOnlyOne/ConcurrencyFramework.svg)](https://www.jitpack.io/#YouAreOnlyOne/ConcurrencyFramework)
 
-使用自行替换下面的版本号，以获得最新版本。
+使用自行替换上面的版本号，以获得最新版本。
     
 
 # 使用方法
@@ -38,6 +38,22 @@
     
     
  
+# 使用示例
+
+	Volley.sendJSONRequest(null, url, String.class, new IDataListener<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                       // Toast.makeText(MainActivity.this,"结果："+s,Toast.LENGTH_LONG).show();
+                        showResult.setText(""+s);
+                    }
+
+                    @Override
+                    public void onFailure() {
+                        Toast.makeText(MainActivity.this,"请求错误",Toast.LENGTH_LONG).show();
+
+                   }
+            });
+
 # 项目用到的权限
 
   在manifest文件中添加访问的权限：
@@ -48,7 +64,10 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
    
-
+# 主要架构和思想
+ 
+ 不依赖其它任何的网络请求框架或jar包，全部手写代码实现网络请求，通过分层和接口回调实现灵活多变和自定义的请求获取，通过构造线程池管理，实现在并发情况下保证网络请求的高效执行。
+ ![iamge](https://github.com/YouAreOnlyOne/ConcurrencyFramework/blob/master/%E6%9E%B6%E6%9E%84.png)
  
 # 使用指南
  
